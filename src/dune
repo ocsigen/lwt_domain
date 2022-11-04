@@ -1,0 +1,6 @@
+(library
+ (public_name lwt_domain)
+ (synopsis "Multicore programming helpers for Lwt")
+ (wrapped false)
+ (libraries lwt lwt.unix domainslib)
+ (flags (:standard -w +A)))

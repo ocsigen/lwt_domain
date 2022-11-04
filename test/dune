@@ -1,4 +1,10 @@
-(library
- (name lwttester)
- (wrapped false)
- (libraries lwt unix lwt.unix))
+(executable
+ (name main)
+ (package lwt_domain)
+ (public_name lwt_domain)
+ (libraries lwt_domain))
+
+(alias
+ (name runtest)
+ (package lwt_domain)
+ (action (run %{exe:main.exe})))
