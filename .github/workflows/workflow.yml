@@ -15,7 +15,7 @@ jobs:
         os:
           - ubuntu-latest
         ocaml-compiler:
-          - 5.0.x
+          - ocaml-variants.5.0.0+trunk
         local-packages:
           - lwt_domain.opam
 
@@ -24,11 +24,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Hack Git CRLF for ocaml/setup-ocaml issue #529
-        if: ${{ startsWith(matrix.os, 'windows-') }}
-        run: |
-          & "C:\Program Files\Git\bin\git.exe" config --system core.autocrlf input
 
       - name: Use OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
