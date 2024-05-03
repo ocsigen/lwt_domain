@@ -9,31 +9,20 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-        ocaml-compiler:
-          - ocaml-variants.5.0.0+trunk
-        local-packages:
-          - lwt_domain.opam
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout tree
+        uses: actions/checkout@v4
 
-      - name: Use OCaml ${{ matrix.ocaml-compiler }}
+      - name: Set-up OCaml
         uses: ocaml/setup-ocaml@v2
         with:
-          ocaml-compiler: ${{ matrix.ocaml-compiler }}
-          opam-depext-flags: --with-test
-          opam-local-packages: ${{ matrix.local-packages }}
+          ocaml-compiler: "5.1"
+          allow-prerelease-opam: true
 
       - run: opam install lwt_domain --deps-only --with-test
 
-      - run: opam exec -- dune build --only-packages lwt_domain
+      - run: opam exec -- dune build
 
-      - run: opam exec -- dune runtest --only-packages lwt_domain
+      - run: opam exec -- dune runtest
