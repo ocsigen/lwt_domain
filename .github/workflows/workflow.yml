@@ -18,7 +18,7 @@ jobs:
       - name: Set-up OCaml
         uses: ocaml/setup-ocaml@v2
         with:
-          ocaml-compiler: "5.1"
+          ocaml-compiler: "5.2"
           allow-prerelease-opam: true
 
       - run: opam install lwt_domain --deps-only --with-test
