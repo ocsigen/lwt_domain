@@ -15,4 +15,6 @@
   (ocaml (>= 5.0))
   base-domains
   (domainslib (>= 0.5))
-  (lwt (>= 5.6))))
+  (lwt (>= 5.6))
+  (ocaml-lsp-server :with-dev-setup)
+  (ocamlformat (and (= 0.27.0) :with-dev-setup))))
