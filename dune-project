@@ -1,4 +1,4 @@
-(lang dune 3.17)
+(lang dune 3.20)
 (name lwt_domain)
 
 (generate_opam_files true)
